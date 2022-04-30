@@ -4,17 +4,12 @@ const router = express.Router();
 const routeGuard = require('./../middleware/route-guard');
 
 router.get('/', routeGuard, (req, res, next) => {
-  Question.create({
-    year: '1992',
-    winnerTeam: 'Juventus',
-    loserTeam: 'Torino'
-  })
-    .then(() => {
-      return Question.find({});
-    })
+  Question.find()
     .then((questions) => {
-      console.log(questions);
-      res.render('questions', { questions });
+      const randomQuestion =
+        questions[Math.floor(Math.random() * questions.length)];
+      console.log(randomQuestion);
+      res.render('questions', { randomQuestion });
     })
     .catch((error) => next(error));
 });
