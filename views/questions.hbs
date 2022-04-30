@@ -1,14 +1,19 @@
 <h1>ola</h1>
 
 <ul>
-  {{#each questions}}
 
-    <div>
-      {{year}}
-      {{winnerTeam}}
-    </div>
+  <div>
+    <h1>Who was the champion of ULC on the season {{randomQuestion.year}}?</h1>
 
-  {{/each}}
+  </div>
+  {{#if randomPosition}}
+    <button>{{randomQuestion.winnerTeam}}</button>
+    <button>{{randomQuestion.loserTeam}}</button>
+  {{else}}
+    <button>{{randomQuestion.loserTeam}}</button>
+    <button>{{randomQuestion.winnerTeam}}</button>
+  {{/if}}
+
 </ul>
 
 {{!--
