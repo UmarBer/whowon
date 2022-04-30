@@ -7,11 +7,19 @@
 
   </div>
   {{#if randomPosition}}
-    <button>{{randomQuestion.winnerTeam}}</button>
-    <button>{{randomQuestion.loserTeam}}</button>
+    <form action="/questions" method="GET">
+      <button>{{randomQuestion.winnerTeam}}</button>
+    </form>
+    <form action="/" method="GET">
+      <button>{{randomQuestion.loserTeam}}</button>
+    </form>
   {{else}}
-    <button>{{randomQuestion.loserTeam}}</button>
-    <button>{{randomQuestion.winnerTeam}}</button>
+    <form action="/" method="GET">
+      <button>{{randomQuestion.loserTeam}}</button>
+    </form>
+    <form action="/questions" method="GET">
+      <button>{{randomQuestion.winnerTeam}}</button>
+    </form>
   {{/if}}
 
 </ul>
