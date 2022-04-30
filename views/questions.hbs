@@ -3,9 +3,16 @@
 <ul>
 
   <div>
-    {{randomQuestion.year}}
-    {{randomQuestion.winnerTeam}}
+    <h1>Who was the champion of ULC on the season {{randomQuestion.year}}?</h1>
+
   </div>
+  {{#if randomPosition}}
+    <button>{{randomQuestion.winnerTeam}}</button>
+    <button>{{randomQuestion.loserTeam}}</button>
+  {{else}}
+    <button>{{randomQuestion.loserTeam}}</button>
+    <button>{{randomQuestion.winnerTeam}}</button>
+  {{/if}}
 
 </ul>
 
