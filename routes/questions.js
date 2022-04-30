@@ -21,9 +21,4 @@ router.get('/', routeGuard, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-function counter() {
-  count++;
-  console.log(count);
-}
-
 module.exports = router;
