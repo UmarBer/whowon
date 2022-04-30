@@ -3,7 +3,7 @@ const Question = require('../models/question');
 const router = express.Router();
 const routeGuard = require('./../middleware/route-guard');
 const helpers = require('handlebars-helpers')();
-
+let count = 0;
 router.get('/', routeGuard, (req, res, next) => {
   Question.find()
     .then((questions) => {
@@ -17,7 +17,13 @@ router.get('/', routeGuard, (req, res, next) => {
         randomPosition: randomPosition > 0.5
       });
     })
+
     .catch((error) => next(error));
 });
+
+function counter() {
+  count++;
+  console.log(count);
+}
 
 module.exports = router;
