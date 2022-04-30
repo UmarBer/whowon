@@ -62,6 +62,7 @@ mongoose
   .connect(MONGODB_URI)
   .then(() => {
     debug(`Database connected to URI "${MONGODB_URI}"`);
+    console.log(`Database connected to URI "${MONGODB_URI}"`);
     initiate();
   })
   .catch((error) => {
