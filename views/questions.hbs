@@ -9,7 +9,7 @@
   {{#if randomPosition}}
     <form action="/questions" method="GET">
 
-      <button onclick="counter()">{{randomQuestion.winnerTeam}}</button>
+      <button>{{randomQuestion.winnerTeam}}</button>
     </form>
     <form action="/" method="GET">
       <button>{{randomQuestion.loserTeam}}</button>
@@ -19,7 +19,7 @@
       <button>{{randomQuestion.loserTeam}}</button>
     </form>
     <form action="/questions" method="GET">
-      <button onclick="counter()">{{randomQuestion.winnerTeam}}</button>
+      <button>{{randomQuestion.winnerTeam}}</button>
     </form>
   {{/if}}
 
