@@ -16,7 +16,18 @@ const schema = new mongoose.Schema({
   },
   passwordHashAndSalt: {
     type: String
-  }
+  },
+  highScore: {
+    type: Number,
+    default: 0,
+    required: true
+  },
+  questionsAnsweredCorrectly: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Question'
+    }
+  ]
 });
 
 const User = mongoose.model('User', schema);

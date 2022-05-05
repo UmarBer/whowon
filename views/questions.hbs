@@ -1,8 +1,21 @@
-<h1>ola</h1>
-
 <ul>
-
   <div>
+    <h1>Who was the champion of ULC on the season {{randomQuestion.year}}?</h1>
+  </div>
+
+  <form
+    method="POST"
+    action="/questions/{{randomQuestion._id}}/answer/{{this}}"
+  >
+    {{#each randomQuestion.options}}
+
+      <button>{{this}}</button>
+
+    {{/each}}
+  </form>
+</ul>
+
+{{!-- <div>
     <h1>Who was the champion of ULC on the season {{randomQuestion.year}}?</h1>
 
   </div>
@@ -21,9 +34,7 @@
     <form action="/questions" method="GET">
       <button>{{randomQuestion.winnerTeam}}</button>
     </form>
-  {{/if}}
-
-</ul>
+  {{/if}} --}}
 
 {{!--
 
