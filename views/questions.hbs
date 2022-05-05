@@ -3,15 +3,17 @@
     <h1>Who was the champion of ULC on the season {{randomQuestion.year}}?</h1>
   </div>
 
-  <form
-    method="POST"
-    action="/questions/{{randomQuestion._id}}/answer/{{this}}"
-  >
+  <form method="POST" action="/questions/{{id}}/answer/">
     {{#each randomQuestion.options}}
-
-      <button>{{this}}</button>
-
+      <input
+        id="randomQuestionAnswer"
+        type="radio"
+        value="{{this}}"
+        name="answer"
+      />
+      <label for="randomQuestionAnswer">{{this}}</label>
     {{/each}}
+    <button>Submit</button>
   </form>
 </ul>
 

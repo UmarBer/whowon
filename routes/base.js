@@ -11,14 +11,8 @@ router.get('/', (req, res, next) => {
 router.get('/private', routeGuard, (req, res, next) => {
   res.render('private');
 });
-
-// router.get('/questions', routeGuard, (req, res, next) => {
-//   Questions.find({})
-//     .then((questions) => {
-//       console.log(req.body);
-//       res.render('questions', { questions });
-//     })
-//     .catch((error) => next(error));
-// });
+router.get('/game-over', routeGuard, (req, res, next) => {
+  res.render('game-over');
+});
 
 module.exports = router;
