@@ -6,6 +6,9 @@
       {{randomQuestion.year}}?</h1>
   </div>
 
+  <img style="max-width: 50px;" src="{{badgeImg}}" />
+  <img style="max-width: 50px;" src="{{badgeImg2}}" />
+
   <form method="POST" action="/questions/{{id}}/answer/">
     {{#each randomQuestion.options}}
       <input
@@ -14,39 +17,12 @@
         value="{{this}}"
         name="answer"
       />
-      <label for="randomQuestionAnswer">{{this}}</label>
+
+      <label for="randomQuestionAnswer">
+        {{this}}
+
+      </label>
     {{/each}}
     <button>Submit</button>
   </form>
 </ul>
-
-{{!-- <div>
-    <h1>Who was the champion of ULC on the season {{randomQuestion.year}}?</h1>
-
-  </div>
-  {{#if randomPosition}}
-    <form action="/questions" method="GET">
-
-      <button>{{randomQuestion.winnerTeam}}</button>
-    </form>
-    <form action="/" method="GET">
-      <button>{{randomQuestion.loserTeam}}</button>
-    </form>
-  {{else}}
-    <form action="/" method="GET">
-      <button>{{randomQuestion.loserTeam}}</button>
-    </form>
-    <form action="/questions" method="GET">
-      <button>{{randomQuestion.winnerTeam}}</button>
-    </form>
-  {{/if}} --}}
-
-{{!--
-
-<h1>'Who won the UCL in the {{Year}}?'</h1>
-
-<form action="/question" method="GET">
-  <button>{{WinnerTeam}}</button>
-  <button>{{Looser Team}}</button>
-</form>>
---}}

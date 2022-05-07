@@ -16,22 +16,36 @@ router.get('/', routeGuard, (req, res, next) => {
       return Question.findOne(queryFilter).skip(randomIndex);
     })
     .then((randomQuestion) => {
-      const randomOptions = Math.random();
-      if (randomOptions > 0.5) {
-        randomQuestion.options.reverse();
-      }
-      res.render('questions', {
-        randomQuestion,
-        id: randomQuestion._id
-      });
-      return randomQuestion;
-    })
-    .then((randomQuestion) => {
+      // const option1 = randomQuestion.options[0];
+      // const option2 = randomQuestion.options[1];
       const option1 = randomQuestion.options[0];
-      console.log(option1);
       const option2 = randomQuestion.options[1];
-      Badge.find({ teamLogo: option1 }).then((badges) => {
+      console.log(option1);
+      console.log(option2);
+      Badge.find({ teamLogo: [option1, option2] }).then((badges) => {
+        const randomOptions = Math.floor(Math.random() * 100);
+        console.log(randomOptions);
+        console.log(randomQuestion.options);
         console.log(badges);
+
+        if (randomQuestion.options[0] === badges[0].teamLogo) {
+        } else {
+          badges.reverse();
+        }
+        if (randomOptions > 50) {
+          randomQuestion.options.reverse();
+          badges.reverse();
+          console.log(randomQuestion.options);
+          console.log(badges);
+        }
+        let badgeImg = badges[0].teamURL;
+        let badgeImg2 = badges[1].teamURL;
+        res.render('questions', {
+          randomQuestion,
+          id: randomQuestion._id,
+          badgeImg,
+          badgeImg2
+        });
       });
     })
     .catch((error) => {
