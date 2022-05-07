@@ -1,9 +1,10 @@
 const express = require('express');
-const Question = require('../models/question');
 const router = express.Router();
 const routeGuard = require('./../middleware/route-guard');
 const helpers = require('handlebars-helpers')();
+const Question = require('../models/question');
 const User = require('../models/user');
+const Badge = require('../models/badge');
 
 router.get('/', routeGuard, (req, res, next) => {
   const idsOfQuestionsInCurrentStreak = req.user.questionsAnsweredCorrectly;
@@ -15,10 +16,22 @@ router.get('/', routeGuard, (req, res, next) => {
       return Question.findOne(queryFilter).skip(randomIndex);
     })
     .then((randomQuestion) => {
-      console.log(randomQuestion._id);
+      const randomOptions = Math.random();
+      if (randomOptions > 0.5) {
+        randomQuestion.options.reverse();
+      }
       res.render('questions', {
         randomQuestion,
         id: randomQuestion._id
+      });
+      return randomQuestion;
+    })
+    .then((randomQuestion) => {
+      const option1 = randomQuestion.options[0];
+      console.log(option1);
+      const option2 = randomQuestion.options[1];
+      Badge.find({ teamLogo: option1 }).then((badges) => {
+        console.log(badges);
       });
     })
     .catch((error) => {
@@ -27,11 +40,8 @@ router.get('/', routeGuard, (req, res, next) => {
 });
 
 router.post('/:questionId/answer/', routeGuard, (req, res, next) => {
-  console.log(req.body.answer);
   const answerValue = req.body.answer;
-  console.log(req.params);
   const { questionId } = req.params;
-  console.log(questionId);
   Question.findById(questionId)
     .then((question) => {
       if (question.correct === answerValue) {
