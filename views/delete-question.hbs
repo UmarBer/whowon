@@ -1,0 +1,15 @@
+<h1>Here is a list of your Questions</h1>
+
+{{#each questionsID}}
+
+  <form action="/profile/{{this._id}}/delete-question" method="post">
+
+    <h1> Who won the {{this.competition}} </h1>
+    <h2> on the season {{this.year}}</h2>
+    <h2> between {{this.options}}</h2>
+    <h1> Correct answer is: {{this.correct}}</h1>
+
+    <button>Delete</button>
+
+  </form>
+{{/each}}

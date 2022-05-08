@@ -16,8 +16,6 @@ router.get('/', routeGuard, (req, res, next) => {
       return Question.findOne(queryFilter).skip(randomIndex);
     })
     .then((randomQuestion) => {
-      // const option1 = randomQuestion.options[0];
-      // const option2 = randomQuestion.options[1];
       const option1 = randomQuestion.options[0];
       const option2 = randomQuestion.options[1];
       console.log(option1);

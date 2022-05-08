@@ -2,15 +2,24 @@ const mongoose = require('mongoose');
 
 const questionsSchema = new mongoose.Schema({
   competition: {
-    type: String
+    type: String,
+    required: true
   },
-  year: String,
+  year: {
+    type: String,
+    required: true
+  },
   options: [
     {
-      type: String
+      type: String,
+      required: true
     }
   ],
   correct: {
+    type: String,
+    required: true
+  },
+  createdBy: {
     type: String
   }
 });
