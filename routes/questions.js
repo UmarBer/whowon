@@ -16,35 +16,55 @@ router.get('/', routeGuard, (req, res, next) => {
       return Question.findOne(queryFilter).skip(randomIndex);
     })
     .then((randomQuestion) => {
-      const option1 = randomQuestion.options[0];
+      const option1 = randomQuestion.options[0]; //benfica
       const option2 = randomQuestion.options[1];
       console.log(option1);
       console.log(option2);
-      Badge.find({ teamLogo: [option1, option2] }).then((badges) => {
-        const randomOptions = Math.floor(Math.random() * 100);
-        console.log(randomOptions);
-        console.log(randomQuestion.options);
-        console.log(badges);
+      Badge.find({ teamLogo: [option1, option2] })
+        .then((badges) => {
+          const randomOptions = Math.floor(Math.random() * 100);
+          const standard = {
+            teamLogo: 'default',
+            teamURL:
+              'https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Sport-PNG/Football_PNG_Clipart.png?m=1575454951'
+          };
+          if (badges[0] == undefined) {
+            badges[0] = standard;
 
-        if (randomQuestion.options[0] === badges[0].teamLogo) {
-        } else {
-          badges.reverse();
-        }
-        if (randomOptions > 50) {
-          randomQuestion.options.reverse();
-          badges.reverse();
+            console.log('mira', badges[0]);
+          } else if (badges[1] == undefined) {
+            badges[1] = standard;
+          }
+          console.log(randomOptions);
           console.log(randomQuestion.options);
           console.log(badges);
-        }
-        let badgeImg = badges[0].teamURL;
-        let badgeImg2 = badges[1].teamURL;
-        res.render('questions', {
-          randomQuestion,
-          id: randomQuestion._id,
-          badgeImg,
-          badgeImg2
+
+          if (randomQuestion.options[0] === badges[0].teamLogo) {
+          } else {
+            badges.reverse();
+          }
+          if (randomOptions > 50) {
+            randomQuestion.options.reverse();
+            badges.reverse();
+            console.log(randomQuestion.options);
+            console.log(badges);
+          }
+
+          console.log('This is badges0', badges[0]);
+          console.log('This is URL', badges[0].teamURL);
+          // let badgeImg = badges[0].teamURL;
+          // let badgeImg2 = badges[1].teamURL;
+
+          res.render('questions', {
+            randomQuestion,
+            id: randomQuestion._id,
+            badgeImg: badges[0].teamURL,
+            badgeImg2: badges[1].teamURL
+          });
+        })
+        .catch((error) => {
+          next(error);
         });
-      });
     })
     .catch((error) => {
       next(error);

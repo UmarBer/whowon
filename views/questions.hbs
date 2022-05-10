@@ -5,11 +5,16 @@
       on the season
       {{randomQuestion.year}}?</h1>
   </div>
+  <div class="badges">
+    <img style="max-width: 50px;" src="{{badgeImg}}" />
 
-  <img style="max-width: 50px;" src="{{badgeImg}}" />
-  <img style="max-width: 50px;" src="{{badgeImg2}}" />
-
-  <form method="POST" action="/questions/{{id}}/answer/">
+    <img style="max-width: 50px;" src="{{badgeImg2}}" />
+  </div>
+  <form
+    class="questions-display"
+    method="POST"
+    action="/questions/{{id}}/answer/"
+  >
     {{#each randomQuestion.options}}
       <input
         id="randomQuestionAnswer"
