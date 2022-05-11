@@ -102,4 +102,17 @@ label {
   max-width: 50em;
 }
 
+.button {
+  margin: 1rem;
+  font-size: 30px;
+}
+
+.button button:hover {
+  transform: scale(5);
+}
+
+.button:hover {
+  transform: scale(5);
+}
+
 /*# sourceMappingURL=style.css.map */
