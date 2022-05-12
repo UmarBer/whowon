@@ -1,33 +1,34 @@
-<ul>
-  <div>
+<div class="questions">
+  <div class="question-header">
     <h1>Who was the champion of the
       {{randomQuestion.competition}}
       on the season
       {{randomQuestion.year}}?</h1>
   </div>
   <div class="badges">
-    <img style="max-width: 50px;" src="{{badgeImg}}" />
+    <img class="badge1" src="{{badgeImg}}" />
 
-    <img style="max-width: 50px;" src="{{badgeImg2}}" />
+    <img class="badge1" src="{{badgeImg2}}" />
   </div>
   <form
     class="questions-display"
     method="POST"
     action="/questions/{{id}}/answer/"
   >
+
     {{#each randomQuestion.options}}
-      <input
-        id="randomQuestionAnswer"
-        type="radio"
-        value="{{this}}"
-        name="answer"
-      />
+      <div class="buttons-questions">
+        <input
+          class="option"
+          id="randomQuestionAnswer"
+          type="submit"
+          value="{{this}}"
+          name="answer"
+        />
+      </div>
 
-      <label for="randomQuestionAnswer">
-        {{this}}
-
-      </label>
     {{/each}}
-    <button>Submit</button>
+
   </form>
-</ul>
+
+</div>
