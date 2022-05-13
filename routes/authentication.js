@@ -24,7 +24,7 @@ router.post('/sign-up', (req, res, next) => {
     })
     .then((user) => {
       req.session.userId = user._id;
-      res.redirect('/profile');
+      res.redirect('/');
     })
     .catch((error) => {
       next(error);

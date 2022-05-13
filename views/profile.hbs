@@ -1,16 +1,24 @@
-<h1>Private</h1>
-<p>This page should only be accessible to authenticated users.</p>
-<span><strong>Name</strong>: {{user.name}}</span>
-<br />
-<span><strong>Email</strong>: {{user.email}}</span>
-<div>
+<div class="profile">
+  <h1>Hi there {{user.name}}!</h1>
+  <p>Welcome to your profile, this page should only be accessible to the best
+    sport experts.</p>
+  <p>Here you can create and delete your own questions.</p>
+  <span><strong>Name</strong>: {{user.name}}</span>
+  <br />
+  <span><strong>Email</strong>: {{user.email}}</span>
 
-  <a href="/profile/create-question">Create a question</a>
+  <a class="button-create" href="/profile/create-question">Create a question</a>
 
-</div>
+  <a class="button-delete" href="/profile/delete-question">Delete one of your
+    questions</a>
 
-<div>
+  <div class="container">
 
-  <a href="/profile/delete-question">Delete one of your questions</a>
+    <span class="button facebook"><i class="fa fa-facebook"></i></span>
+    <span class="button whatsapp"><i class="fa fa-whatsapp"></i></span>
+    <span class="button twitter"><i class="fa fa-twitter"></i></span>
+    <span class="button telegram"><i class="fa fa-telegram"></i></span>
 
+  </div>
+  <p>Challenge your friends!</p>
 </div>

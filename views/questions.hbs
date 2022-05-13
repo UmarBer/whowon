@@ -5,11 +5,13 @@
       on the season
       {{randomQuestion.year}}?</h1>
   </div>
+
   <div class="badges">
     <img class="badge1" src="{{badgeImg}}" />
 
     <img class="badge1" src="{{badgeImg2}}" />
   </div>
+
   <form
     class="questions-display"
     method="POST"
@@ -19,7 +21,7 @@
     {{#each randomQuestion.options}}
       <div class="buttons-questions">
         <input
-          class="option"
+          class="button-53"
           id="randomQuestionAnswer"
           type="submit"
           value="{{this}}"

@@ -1,2 +1,15 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="home"><h1>Guess who won!</h1>
+  <p>The new Football Trivia for fans from around the world. </p>
+  You will be presented with questions from the top European leagues, as well as the
+    Champions League and the NBA. Play now and challenge your friends to surpass
+    your highscore.</p>
+  <p>Choose the correct winner between two teams!</p>
+
+<div>
+{{#if user}}
+  <a href="/questions">Play now</a>
+{{else}}          
+  <p>Not registered?</p><a href="/sign-up">Sign up now!</a>
+{{/if}}
+</div>
+</div>

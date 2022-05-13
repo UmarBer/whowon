@@ -11,18 +11,20 @@
   <body>
 
     <nav class="navbar">
-      <a class="nav-item" href="/">Home</a>
-      <a class="nav-item" href="/scoreboard">Scoreboard</a>
-      {{#if user}}
-        <a class="nav-item" href="/questions">Play</a>
-        <a class="nav-item" href="/profile">{{user.name}}'s Profile</a>
-        <form action="/authentication/sign-out" method="POST">
-          <button>Sign Out</button>
-        </form>
-      {{else}}
-        <a class="nav-item" href="/authentication/sign-in">Sign In</a>
-        <a class="nav-item" href="/authentication/sign-up">Sign Up</a>
-      {{/if}}
+      <ul>
+        <li><a class="nav-item" href="/">Home</a></li>
+        <li><a class="nav-item" href="/scoreboard">Scoreboard</a></li>
+        {{#if user}}
+          <li><a class="nav-item" href="/questions">Play</a></li>
+          <li><a class="nav-item" href="/profile">{{user.name}}'s Profile</a></li>
+          <li><form action="/authentication/sign-out" method="POST">
+              <button>Sign Out</button>
+            </form></li>
+        {{else}}
+          <li><a class="nav-item" href="/authentication/sign-in">Sign In</a></li>
+          <li><a class="nav-item" href="/authentication/sign-up">Sign Up</a></li>
+        {{/if}}
+      </ul>
     </nav>
 
     {{{body}}}
