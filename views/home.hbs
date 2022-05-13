@@ -1,15 +1,20 @@
 <div class="home"><h1>Guess who won!</h1>
-  <p>The new Football Trivia for fans from around the world. </p>
-  You will be presented with questions from the top European leagues, as well as the
-    Champions League and the NBA. Play now and challenge your friends to surpass
-    your highscore.</p>
-  <p>Choose the correct winner between two teams!</p>
+  <p>The new Football Trivia for fans from around the world.</p>
+  <p>You will be presented with questions from the top European leagues, as well
+    as the Champions League and the NBA.</p>
+  <p> Play now and challenge your friends to surpass your highscore. </p><p
+  >Choose the correct winner between two teams!</p>
 
-<div>
-{{#if user}}
-  <a href="/questions">Play now</a>
-{{else}}          
-  <p>Not registered?</p><a href="/sign-up">Sign up now!</a>
-{{/if}}
-</div>
+  <div>
+    {{#if user}}
+      <form action="/questions" method="get">
+        <button class="button1">Play Now!</button>
+      </form>
+    {{else}}
+      <p>Not registered?</p>
+      <form action="sign-up" method="get">
+        <button class="button1">Sign up now!</button>
+      </form>
+    {{/if}}
+  </div>
 </div>
