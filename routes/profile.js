@@ -33,7 +33,7 @@ router.post('/success', (req, res, next) => {
   const createdBy = req.user._id;
   Question.create({ competition, year, options, correct, createdBy })
     .then((newQuestion) => {
-      res.redirect('/profile/successful');
+      res.redirect('/profile/');
     })
     .catch((error) => {
       next(error);
